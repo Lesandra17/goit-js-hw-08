@@ -28,7 +28,15 @@ emailInput.addEventListener('input', saveFormStateToLocalStorage);
 messageTextarea.addEventListener('input', saveFormStateToLocalStorage);
 feedbackForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    if (!emailInput.value || !messageTextarea.value) {
+    alert("Заповніть всі поля.");
+    return;
+  }
     localStorage.removeItem(feedbackStorageKey);
-    console.log({email: emailInput.value, message: messageTextarea.value,});
-});
+    emailInput.value = '';
+    messageTextarea.value = ''
+   });
     
+    console.log({ email: emailInput.value, message: messageTextarea.value, });
+
